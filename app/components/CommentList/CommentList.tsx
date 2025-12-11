@@ -18,21 +18,21 @@ export default function CommentList() {
   }, []);
 
   useEffect(() => {
-    const handler = (e: any) => {
-      const newComment = e.detail as Comment;
+    const handler = (e: CustomEvent<Comment>) => {
+      const newComment = e.detail;
       setComments((prev) => [newComment, ...prev]);
     };
-    window.addEventListener("new-comment", handler);
-    return () => window.removeEventListener("new-comment", handler);
+    window.addEventListener("new-comment", handler as EventListener);
+    return () => window.removeEventListener("new-comment", handler as EventListener);
   }, []);
 
   useEffect(() => {
-    const handler = (e: any) => {
+    const handler = (e: CustomEvent<string>) => {
       const id = e.detail;
       setComments((prev) => prev.filter((c) => c.id !== id));
     };
-    window.addEventListener("rollback-comment", handler);
-    return () => window.removeEventListener("rollback-comment", handler);
+    window.addEventListener("rollback-comment", handler as EventListener);
+    return () => window.removeEventListener("rollback-comment", handler as EventListener);
   }, []);
 
   if (comments.length === 0) {
