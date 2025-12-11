@@ -3,8 +3,8 @@ import CommentList from "../components/CommentList/CommentList";
 
 export default function CommentsPage() {
   return (
-    <div>
-      <h1>Comments</h1>
+    <div className="page-container">
+      <h1>Comentarios</h1>
       <CommentForm />
       <CommentList />
     </div>

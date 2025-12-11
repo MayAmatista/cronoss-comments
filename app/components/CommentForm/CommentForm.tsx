@@ -65,7 +65,7 @@ export default function CommentForm() {
         onChange={(e) => setContent(e.target.value)}
       />
 
-      <button className={styles.button} disabled={status === "submitting"}>
+      <button className={`${styles.button} primary-button`} disabled={status === "submitting"}>
         {status === "submitting" ? "Enviando..." : "Enviar"}
       </button>
 
