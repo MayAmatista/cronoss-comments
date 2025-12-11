@@ -14,7 +14,7 @@ export async function getCommentsFromDB(): Promise<Comment[]> {
             id: c.id,
             author: c.author,
             content: c.content,
-            createdAt: c.created_at,
+            createdAt: c.created_at + "Z",
         })
     );
 }

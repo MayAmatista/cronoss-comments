@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Comment } from "../../lib/schema";
 import { getCommentsFromDB } from "../../lib/comments";
 import styles from "./CommentList.module.css";
+import { timeAgo } from "@/app/lib/timeAgo";
 
 export default function CommentList() {
   const [comments, setComments] = useState<Comment[]>([]);
@@ -44,7 +45,9 @@ export default function CommentList() {
         <li className={styles.item} key={c.id}>
           <strong>{c.author}</strong>
           <p>{c.content}</p>
-          <small>{new Date(c.createdAt).toLocaleString()}</small>
+            <small className={styles.time} title={new Date(c.createdAt).toLocaleString()}>
+            {timeAgo(c.createdAt)}
+            </small>
         </li>
       ))}
     </ul>
